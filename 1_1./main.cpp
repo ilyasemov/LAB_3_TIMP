@@ -49,12 +49,12 @@ SUITE(EncryptTest)
                     p->encrypt("СЕМОВИЛЬЯ"));
     }
     TEST_FIXTURE(KeyB_fixture, LowCaseString) {
-        CHECK_EQUAL("ТЁНПГЙМЭАТЁСДЁЁГЙШ",
-                    p->encrypt("СЕМОВИЛЬЯСЕРГЕЕВИЧ"));
+        CHECK_EQUAL("ТЁНПГЙМЭА",
+                    p->encrypt("семовилья"));
     }
     TEST_FIXTURE(KeyB_fixture, StringWithWhitspaceAndPunct) {
         CHECK_EQUAL("ТЁНПГЙМЭАТЁСДЁЁГЙШ",
-                    p->encrypt("СЕМОВИЛЬЯСЕРГЕЕВИЧ ???"));
+                    p->encrypt("СЕМОВИЛЬЯ ???"));
     }
     TEST_FIXTURE(KeyB_fixture, StringWithNumbers) {
         CHECK_EQUAL("ДПЕБСПЗЕЁОЙА", p->encrypt("2003 года рождения"));
@@ -74,14 +74,14 @@ SUITE(EncryptTest)
 SUITE(DecryptText)
 {
     TEST_FIXTURE(KeyB_fixture, UpCaseString) {
-        CHECK_EQUAL("СЕМОВИЛЬЯСЕРГЕЕВИЧ",
-                    p->decrypt("ТЁНПГЙМЭАТЁСДЁЁГЙШ"));
+        CHECK_EQUAL("СЕМОВИЛЬЯ",
+                    p->decrypt("тёнпгЙМЭА"));
     }
     TEST_FIXTURE(KeyB_fixture, LowCaseString) {
-        CHECK_THROW(p->decrypt("тёнпгймэаТЁСДЁЁГЙШ"),cipher_error);
+        CHECK_THROW(p->decrypt("ТЁНПГЙМЭА"),cipher_error);
     }
     TEST_FIXTURE(KeyB_fixture, WhitespaceString) {
-        CHECK_THROW(p->decrypt("ТЁНПГ ЙМЭА ТЁСДЁЁГЙШ"),cipher_error);
+        CHECK_THROW(p->decrypt("ТЁНПГ ЙМЭА"),cipher_error);
     }
     TEST_FIXTURE(KeyB_fixture, DigitsString) {
         CHECK_THROW(p->decrypt("2003ДПЕБСПЗЕЁОЙА"),cipher_error);
