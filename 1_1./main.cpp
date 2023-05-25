@@ -75,10 +75,10 @@ SUITE(DecryptText)
 {
     TEST_FIXTURE(KeyB_fixture, UpCaseString) {
         CHECK_EQUAL("СЕМОВИЛЬЯ",
-                    p->decrypt("тёнпгЙМЭА"));
+                    p->decrypt("ТЁНПГЙМЭА"));
     }
     TEST_FIXTURE(KeyB_fixture, LowCaseString) {
-        CHECK_THROW(p->decrypt("ТЁНПГЙМЭА"),cipher_error);
+        CHECK_THROW(p->decrypt("тёнпгЙМЭА"),cipher_error);
     }
     TEST_FIXTURE(KeyB_fixture, WhitespaceString) {
         CHECK_THROW(p->decrypt("ТЁНПГ ЙМЭА"),cipher_error);
