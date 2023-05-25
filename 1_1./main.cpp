@@ -1,5 +1,6 @@
 #include <UnitTest++/UnitTest++.h>
-#include <modAlphaCipher.h>
+#include "/home/stud/C++Projects/3lab/kod1/modAlphaCipher.h"
+#include "/home/stud/C++Projects/3lab/kod1/modAlphaCipher.cpp"
 
 SUITE(KeyTest)
 {
@@ -92,8 +93,8 @@ SUITE(DecryptText)
         CHECK_THROW(p->decrypt(""),cipher_error);
     }
     TEST(MaxShiftKey) {
-        CHECK_EQUAL("БЫСТРАЯБУРАЯЛИСА",
-                    modAlphaCipher("Я").decrypt("АЪРСПЯЮАТПЯЮКЗРЯ"));
+        CHECK_EQUAL("СЕМОВИЛЬЯ",
+                    modAlphaCipher("Я").decrypt("РДЛНБЗКЫЮ"));
     }
 }
 
