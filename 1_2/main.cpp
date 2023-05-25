@@ -51,7 +51,7 @@ SUITE(EncryptTest)
                     p->encrypt("HELLO WORLD!!!"));
     }
     TEST_FIXTURE(KeyB_fixture, StringWithNumbers) {
-        CHECK_EQUAL("LRLOEWDHOL", p->encrypt("HELLO 2021 WORLD"));
+        CHECK_EQUAL("LRLOEWDHOL", p->encrypt("HELLO 2023 WORLD"));
     }
     TEST_FIXTURE(KeyB_fixture, EmptyString) {
         CHECK_THROW(p->encrypt(""),cipher_error);
@@ -78,7 +78,7 @@ SUITE(DecryptText)
         CHECK_THROW(p->decrypt("LRLOE WDHOL"),cipher_error);
     }
     TEST_FIXTURE(KeyB_fixture, DigitsString) {
-        CHECK_THROW(p->decrypt("LRLOE2021WDHOL"),cipher_error);
+        CHECK_THROW(p->decrypt("LRLOE2023WDHOL"),cipher_error);
     }
     TEST_FIXTURE(KeyB_fixture, PunctString) {
         CHECK_THROW(p->decrypt("LRLOE,WDHOL"),cipher_error);
